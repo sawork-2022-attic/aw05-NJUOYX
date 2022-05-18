@@ -15,5 +15,5 @@ public interface ProductMapper {
 
     Product toProduct(ProductDto productDto);
 
-    ProductDto toProductDto(Product pet);
+    ProductDto toProductDto(Product product);
 }
