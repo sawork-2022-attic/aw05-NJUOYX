@@ -1,0 +1,26 @@
+server:
+  port: 6001
+spring:
+  application:
+    name: pos-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: pos-products
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/products/**
+            - Method=GET
+        - id: pos-cart
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/cart/**
+
+eureka:
+  instance:
+    instance-id: pos-gateway
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
