@@ -7,15 +7,16 @@ spring:
     gateway:
       routes:
         - id: pos-products
-          uri: http://localhost:8081
+          uri: lb://pos-products
           predicates:
             - Path=/api/products/**
             - Method=GET
         - id: pos-cart
-          uri: http://localhost:8082
+          uri: lb://pos-cart
           predicates:
             - Path=/api/cart/**
-
+  main:
+    web-application-type: reactive
 eureka:
   instance:
     instance-id: pos-gateway
